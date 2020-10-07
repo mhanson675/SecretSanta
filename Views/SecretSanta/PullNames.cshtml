@@ -1,0 +1,27 @@
+﻿@model SecretSanta.ViewModels.VerificationViewModel
+
+@{
+    ViewData["Title"] = "Pulled Pairs";
+}
+
+<h4 class="bg-primary text-white text-center p-2">Secret Santa Participants</h4>
+<table class="table table-sm table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Gifter Name</th>
+            <th>Gifter Email</th>
+            <th>Email Sent</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pair in Model.Status)
+        {
+            <tr>
+                <td>@pair.Key.Name</td>
+                <td>@pair.Key.Email</td>
+                <td>@Html.DisplayFor(modelitem => pair.Value)</td>
+            </tr>
+        }
+    </tbody>
+</table>

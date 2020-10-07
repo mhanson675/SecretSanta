@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Participant>
+
+@{
+    ViewData["Title"] = "Participants";
+}
+
+
+<h4 class="bg-primary text-white text-center p-2">Secret Santa Participants</h4>
+<table class="table table-sm table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var participant in Model)
+        {
+            <tr>
+                <td>@participant.Name</td>
+                <td>@participant.Email</td>
+                <td>@participant.GetAddress()</td>
+                <td class="text-center">
+                    <a asp-action="Details" asp-route-id="@participant.Id"
+                       class="btn btn-sm btn-info">Details</a>
+                    <a asp-action="Edit" asp-route-id="@participant.Id"
+                       class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@participant.Id"
+                       class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Create" class="btn btn-primary">Add New</a>
+<a asp-controller="SecretSanta" asp-action="PullNames" class="btn btn-primary">Pull Names</a>

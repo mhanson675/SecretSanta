@@ -1,0 +1,68 @@
+﻿@model SecretSanta.ViewModels.ParticipantViewModel
+
+<h5 class="text-white text-center p-2">@Model.Action</h5>
+
+<form asp-action="@Model.Action" method="post">
+    <div class="form-group">
+        <input class="form-control" asp-for="Participant.Id" hidden readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="Participant.Name"></label>
+        <div>
+            <span asp-validation-for="Participant.Name" class="text-danger"></span>
+        </div>
+        <input class="form-control" asp-for="Participant.Name" readonly="@Model.ReadOnly" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Participant.Email"></label>
+        <div>
+            <span asp-validation-for="Participant.Email" class="text-danger"></span>
+        </div>
+        <input class="form-control" asp-for="Participant.Email" readonly="@Model.ReadOnly" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Participant.AddressLine1"></label>
+        <div>
+            <span asp-validation-for="Participant.AddressLine1" class="text-danger"></span>
+        </div>
+        <input class="form-control" asp-for="Participant.AddressLine1" readonly="@Model.ReadOnly" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Participant.AddressLine2"></label>
+        <div>
+            <span asp-validation-for="Participant.AddressLine2" class="text-danger"></span>
+        </div>
+        <input class="form-control" asp-for="Participant.AddressLine2" readonly="@Model.ReadOnly" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Participant.City"></label>
+        <div>
+            <span asp-validation-for="Participant.City" class="text-danger"></span>
+        </div>
+        <input class="form-control" asp-for="Participant.City" readonly="@Model.ReadOnly" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Participant.State"></label>
+        <div>
+            <span asp-validation-for="Participant.State" class="text-danger"></span>
+        </div>
+        <input class="form-control" asp-for="Participant.State" readonly="@Model.ReadOnly" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Participant.ZipCode"></label>
+        <div>
+            <span asp-validation-for="Participant.ZipCode" class="text-danger"></span>
+        </div>
+        <input class="form-control" asp-for="Participant.ZipCode" readonly="@Model.ReadOnly" />
+    </div>
+
+    @if (Model.ShowAction)
+    {
+        <button class="btn btn-@Model.Theme" type="submit">@Model.Action</button>
+    }
+    <a class="btn btn-secondary" asp-action="ParticipantsList">Back</a>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
