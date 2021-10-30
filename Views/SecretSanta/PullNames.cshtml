@@ -9,6 +9,34 @@
     <thead>
         <tr>
             <th>Gifter Name</th>
+            <th>Recipient Name</th>
+            <th>Recipient Name</th>
+            <th>Recipient Name</th>
+            <th>Recipient Name</th>
+            <th>Recipient Name</th>
+            <th>Recipient Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pair in Model.Paired)
+        {
+            <tr>
+                <td>@pair.Key.Name</td>
+                <td>@pair.Value.Name</td>
+                <td>@pair.Value.AddressLine1</td>
+                <td>@pair.Value.AddressLine2</td>
+                <td>@pair.Value.City</td>
+                <td>@pair.Value.State</td>
+                <td>@pair.Value.ZipCode</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table table-sm table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Gifter Name</th>
             <th>Gifter Email</th>
             <th>Email Sent</th>
             <th></th>

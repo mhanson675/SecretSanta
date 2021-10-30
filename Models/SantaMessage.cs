@@ -5,7 +5,6 @@ namespace SecretSanta.Models
 {
     public class SantaMessage
     {
-
         public SantaMessage(Participant gifter, Participant recipient, string bodyTemplate, string minPrice, string mailingDate)
         {
             Gifter = gifter;
@@ -14,6 +13,7 @@ namespace SecretSanta.Models
             MinPrice = minPrice;
             MailingDate = mailingDate;
         }
+
         public Participant Recipient { get; }
         public Participant Gifter { get; }
         public string MinPrice { get; }
@@ -21,6 +21,7 @@ namespace SecretSanta.Models
         public string GifterEmail => Gifter.Email;
         public string Subject => ComposeSubject();
         public string BodyTemplate { get; }
+
         public MimeMessage GetMimeMessage()
         {
             var message = new MimeMessage();
@@ -40,10 +41,12 @@ namespace SecretSanta.Models
 
             return message;
         }
+
         private string ComposeSubject()
         {
             return $"Your Secret Santa Pick is {Recipient.Name}";
         }
+
         private string ComposeHtmlBody(string contentId)
         {
             string body = BodyTemplate;

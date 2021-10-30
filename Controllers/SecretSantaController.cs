@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SecretSanta.Data;
 using SecretSanta.Models;
 using SecretSanta.ViewModels;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -35,11 +36,11 @@ namespace SecretSanta.Controllers
                 var message = new SantaMessage(pair.Key, pair.Value, body, "25", "2 Dec");
                 await mailer.SendEmailAsync(message);
                 //TODO: Add email sending verification
+                model.AddPaired(pair.Key, pair.Value);
                 model.AddStatus(pair.Key, true);
             }
 
             return View(model);
-            //return RedirectToAction("Index", "Home");
         }
 
         private string GetMessageBody()
